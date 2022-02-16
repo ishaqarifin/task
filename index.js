@@ -1,20 +1,11 @@
 const express = require('express') // Pemanggilan package express
 const { is, get } = require('express/lib/request')
-
 const db = require('./connection/db')   //import db connection
-
-// Menggunakan package express
-const app = express()
-
-// set template engine
-app.set('view engine', 'hbs')
+const app = express()  // Menggunakan package express
+app.set('view engine', 'hbs')  // set template engine
 
 app.use('/public', express.static(__dirname + '/public'))
 app.use(express.urlencoded({ extended: false }))
-
-// true => sudah login
-// false => belum login
-const isLogin = true
 
 const blogs = [
     {
