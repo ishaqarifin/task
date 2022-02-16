@@ -1,9 +1,7 @@
-// Pemanggilan package express
-const express = require('express')
+const express = require('express') // Pemanggilan package express
 const { is, get } = require('express/lib/request')
 
-//import db connection
-const db = require('./connection/db')
+const db = require('./connection/db')   //import db connection
 
 // Menggunakan package express
 const app = express()
@@ -221,7 +219,7 @@ app.get('/contact', function (req, res) {
 })
 
 // Konfigurasi port aplikasi
-const port = 3001
+const port = 4444
 app.listen(port, function () {
     console.log(`Server running on port ${port}`);
 })
