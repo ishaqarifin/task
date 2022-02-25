@@ -24,6 +24,24 @@
               <a class="nav-link" href="/form-blog">Add Project</a>
             </li>
           </ul>
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          {{#if isLogin}}
+          <li class="nav-item">
+            <a class="nav-link active  text-orange" aria-current="page">Hello, {{user.name}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link active  text-orange" aria-current="page" href="/register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/login">Login</a>
+          </li>
+          {{/if}}
+        </ul>
           <div class="btn btn-outline-dark bg-warning">
             <a href="/contact" class="fw-bold">Contact Me</a>
           </div>
@@ -81,22 +99,22 @@
         </div>
         <div class="row mb-4">
           {{#each blogs}}
-          <div class="col-4">
+          <div class="col-4 mb-3">
             <div class="card" style="width: 18rem">
-              <a href="/detail-blog/{{@index}}">
-              <img src="/public/assets/blog-img-detail.png" class="card-img-top" alt="..." />
+              <a href="/detail-blog/{{this.id}}">
+              <img src="/uploads/{{this.image}}" class="img-fluid img-thumbnail" alt="image title" />
               </a>
               {{!-- {{this.image}} --}}
               <div class="card-body">
-                <h5 class="card-title">{{this.name}}</h5>
-                <h6 class="mt-0">{{this.diffMonth}} : bulan - {{this.dm}} : hari</h6>
+                <a href="/detail-blog/{{this.id}}"><h5 class="card-title">{{this.name}}</h5></a>
+                <h6 class="mt-0">{{blog.diffMonth}} : bulan - {{this.dm}} : hari</h6>
                 <br>
                 <p class="card-text">{{this.description}}.</p>
                 <div class="container">
                   <div class="row">
                     <div class="col-2 mb-4">
-                      
-                      <img src="{{this.technologies}}" alt="">
+                      {{!-- <img src="{{this.technologies}}" alt=""> --}}
+                      <img src="/{{this.technologies}}" alt="">
                       {{!-- <a href=""><img src="{{this.icon}}" alt=""></a>
                       <a href=""><img src="{{this.icon}}" alt=""></a> --}}
                     </div>
@@ -105,10 +123,10 @@
                 </div>
                 <div class="row">
                   <div class="col-6">
-                    <a href="/update-blog/{{@index}}" class="btn btn-primary">Edit</a>
+                    <a href="/blog-update/{{this.id}}" class="btn btn-primary">Edit</a>
                   </div>
                   <div class="col-6">
-                    <a href="/delete-blog/{{@index}}" class="btn btn-primary">Delete</a>
+                    <a href="/delete-blog/{{this.id}}" class="btn btn-primary">Delete</a>
                   </div>
                 </div>
               </div>
